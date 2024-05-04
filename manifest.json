@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Stack Exchange Re-Design",
+    "version": "1.0",
+    "description": "A redesign of stack exchange",
+    "permissions": [
+        "storage"
+    ],
+    "icons": {
+        "128": "src/logo/logo.png"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "src/scripts/content.js"
+            ],
+            "matches": [
+                "*://*.stackexchange.com/*",
+                "*://stackoverflow.com/*",
+                "*://serverfault.com/*"
+            ]
+        }
+    ]
+}
