@@ -2,6 +2,7 @@ class StackExchangeRedesign {
     constructor() {
         this.initializeStyles();
         this.addButton(document.getElementById('mainbar'), '.d-flex', '#question-mini-list div');
+        this.addButton(document.getElementById('mainbar'), '.d-flex', '#questions');
         this.addButton(document.getElementById('user-tab-questions'), 'div', '#js-post-summaries');
         this.addButton(document.getElementById('user-tab-answers'), 'div', '#js-post-summaries');
         this.addButton(document.getElementById('user-tab-tags'), 'div', '#user-tab-tags .ba');
@@ -23,7 +24,9 @@ class StackExchangeRedesign {
         const questions = document.querySelector(questionsSelector);
         const btn1 = this.createButton(1);
         const btn2 = this.createButton(2);
-        bar.append(btn1, btn2);
+        if (bar.getElementsByTagName('button').length === 0) {
+            bar.append(btn1, btn2);
+        }
 
         this.setInitialView(btn1, btn2, questions);
         btn1.addEventListener('click', () => {
@@ -57,7 +60,7 @@ class StackExchangeRedesign {
             }
         } else {
             btn1.classList.add('stackexchange-redesign-focus');
-            if(questions) questions.className = "";
+            if (questions) questions.className = "";
             if (btn2.classList.contains('stackexchange-redesign-focus')) {
                 btn2.classList.remove('stackexchange-redesign-focus');
             }
@@ -65,4 +68,33 @@ class StackExchangeRedesign {
     }
 }
 
-new StackExchangeRedesign();  
+new StackExchangeRedesign();
+
+document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.key === 's') {
+        event.preventDefault(); // Prevent the default save action
+        //console.log('Ctrl + S was pressed');
+        document.getElementById('search').classList.toggle('stackexchange-redesign-quickSearch')
+    }
+});
+const linkElement = document.createElement('style');
+linkElement.innerHTML = `.stackexchange-redesign-quickSearch{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.61) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px);
+  }
+  .stackexchange-redesign-quickSearch div{
+    max-width:50%;
+  }`;
+document.head.append(linkElement);
+
+
