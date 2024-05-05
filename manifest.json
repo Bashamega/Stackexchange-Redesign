@@ -12,6 +12,8 @@
     "content_scripts": [
         {
             "js": [
+                "src/scripts/layout.js",
+                "src/scripts/Shortcuts.js",
                 "src/scripts/content.js"
             ],
             "matches": [
