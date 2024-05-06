@@ -7,8 +7,10 @@ class Shortcuts {
         document.addEventListener('keydown', (event) => {
             if (event.ctrlKey && event.key === 'f') {
                 event.preventDefault(); // Prevent the default find action
-                document.getElementById('search').classList.toggle('stackexchange-redesign-quickSearch');
-                
+                const searchElement = document.getElementById('search');
+                if (searchElement) {
+                    searchElement.classList.toggle('stackexchange-redesign-quickSearch');
+                }
             }
         });
     }
