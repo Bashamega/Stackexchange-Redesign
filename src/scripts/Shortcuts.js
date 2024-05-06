@@ -1,6 +1,20 @@
 class Shortcuts {
     constructor(){
         this.setupSearchShortcut();
+        this.newQuestion();
+    }
+    baseURL(){
+        const parser = document.createElement('a');
+        parser.href = window.location.href;
+        return parser.protocol + '//' + parser.hostname;
+    }
+    newQuestion(){
+        document.addEventListener('keydown', (event) => {
+            if (event.ctrlKey && event.key === 'q') {
+                event.preventDefault(); // Prevent the default find action
+                window.location.href = this.baseURL() + "/questions/ask"
+            }
+        });  
     }
     setupSearchShortcut(){
         this.injectStylesSearch();
