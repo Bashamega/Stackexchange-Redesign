@@ -6,11 +6,201 @@ class StackExchangeRedesign {
         this.addButton(document.getElementById('user-tab-questions'), 'div', '#js-post-summaries');
         this.addButton(document.getElementById('user-tab-answers'), 'div', '#js-post-summaries');
         this.addButton(document.getElementById('user-tab-tags'), 'div', '#user-tab-tags .ba');
+        this.addButton(document.getElementById('mainbar'), 'div', '.js-post-summaries');
     }
 
     initializeStyles() {
         const linkElement = document.createElement('style');
-        linkElement.innerHTML = `.stackexchange-redesign-button-icon{border-radius:15px;padding:15px;border:0;background:transparent;color:var(--theme-body-font-color);cursor:pointer}.stackexchange-redesign-button-icon.stackexchange-redesign-focus{background:rgba(0,0,0,0.5)}.stackexchange-redesign-button-icon svg path{stroke:var(--theme-body-font-color)}.stackexchange-redesign-button-icon.stackexchange-redesign-focus svg path{stroke:white}.stackexchange-redesign-grid{padding:10px}.stackexchange-redesign-grid>div{display:flex!important;--_ca-bc:var(--bc-medium);border:var(--su-static1) solid var(--_ca-bc);background-color:var(--white);border-radius:var(--br-sm);padding:var(--su12);flex-direction:column!important;position:relative;width:100%;margin:0 auto;text-align:left}.stackexchange-redesign-grid>div>.s-post-summary--stats{display:block!important}.stackexchange-redesign-grid>div>.s-post-summary--stats>div{margin-bottom:10px}`;
+        linkElement.innerHTML = `
+        .stackexchange-redesign-button-icon {
+            border-radius: 15px;
+            padding: 15px;
+            border: 0;
+            background: transparent;
+            color: var(--theme-body-font-color);
+            cursor: pointer
+        }
+        
+        .stackexchange-redesign-button-icon.stackexchange-redesign-focus {
+            background: rgba(0, 0, 0, 0.5)
+        }
+        
+        .stackexchange-redesign-button-icon svg path {
+            stroke: var(--theme-body-font-color)
+        }
+        
+        .stackexchange-redesign-button-icon.stackexchange-redesign-focus svg path {
+            stroke: white
+        }
+        
+        .stackexchange-redesign-grid {
+            padding: 10px
+        }
+        
+        .stackexchange-redesign-grid>div {
+            display: flex !important;
+            --_ca-bc: var(--bc-medium);
+            border: var(--su-static1) solid var(--_ca-bc);
+            background-color: var(--white);
+            border-radius: var(--br-sm);
+            padding: var(--su12);
+            flex-direction: column !important;
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            text-align: left
+        }
+        
+        .stackexchange-redesign-grid>div>.s-post-summary--stats {
+            display: block !important
+        }
+        
+        .stackexchange-redesign-grid>div>.s-post-summary--stats>div {
+            margin-bottom: 10px
+        }
+        
+        .stackexchange-redesign-grid>.s-post-summary__watched {
+
+            color: #fff;
+            background: transparent;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 49, 49, 0.5);
+            border-right: 1px solid rgba(0, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(57, 255, 20, 0.5);
+            border-left: 1px solid rgba(255, 255, 113, 0.5);
+            font-family: sans-serif;
+            position:relative;
+        }
+        
+        .stackexchange-redesign-grid>.s-post-summary__watched .top {
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background: linear-gradient(90deg,
+                    transparent 50%,
+                    rgba(255, 49, 49, 0.5),
+                    rgb(255, 49, 49));
+        }
+        
+        .stackexchange-redesign-grid>.s-post-summary__watched .bottom {
+            position:absolute;
+            right: 0;
+            bottom: 0;
+            height: 5px;
+            background: linear-gradient(90deg,
+                    rgb(57, 255, 20),
+                    rgba(57, 255, 20, 0.5),
+                    transparent 50%);
+        }
+        
+        .stackexchange-redesign-grid>.s-post-summary__watched .right {
+            position:absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(180deg,
+                    transparent 30%,
+                    rgba(0, 255, 255, 0.5),
+                    rgb(0, 255, 255));
+        }
+        
+        .stackexchange-redesign-grid>.s-post-summary__watched .left {
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(180deg,
+                    rgb(255, 255, 113),
+                    rgba(255, 255, 113, 0.5),
+                    transparent 70%);
+        }
+        
+        .stackexchange-redesign-grid>.s-post-summary__watched .top {
+            animation: animateTop 10s ease-in-out infinite;
+        }
+        
+        .stackexchange-redesign-grid>.s-post-summary__watched .bottom {
+            animation: animateBottom 10s ease-in-out infinite;
+        }
+        
+        .stackexchange-redesign-grid>.s-post-summary__watched .right {
+            animation: animateRight 10s ease-in-out infinite;
+        }
+        
+        .stackexchange-redesign-grid>.s-post-summary__watched .left {
+            animation: animateLeft 10s ease-in-out infinite;
+        }
+        
+        @keyframes animateTop {
+            25% {
+                width: 100%;
+                opacity: 1;
+            }
+        
+            30%,
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        @keyframes animateBottom {
+        
+            0%,
+            50% {
+                opacity: 0;
+                width: 0;
+            }
+        
+            75% {
+                opacity: 1;
+                width: 100%;
+            }
+        
+            76%,
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        @keyframes animateRight {
+        
+            0%,
+            25% {
+                opacity: 0;
+                height: 0;
+            }
+        
+            50% {
+                opacity: 1;
+                height: 100%;
+            }
+        
+            55%,
+            100% {
+                height: 100%;
+                opacity: 0;
+            }
+        }
+        
+        @keyframes animateLeft {
+        
+            0%,
+            75% {
+                opacity: 0;
+                bottom: 0;
+                height: 0;
+            }
+        
+            100% {
+                opacity: 1;
+                height: 100%;
+            }
+        }
+        `;
         document.head.append(linkElement);
     }
 
@@ -54,7 +244,18 @@ class StackExchangeRedesign {
     setInitialView(btn1, btn2, questions) {
         if (localStorage.getItem('stackexchange-storage-view') === "grid") {
             btn2.classList.add('stackexchange-redesign-focus');
-            if (questions) questions.className = "d-grid grid__3 lg:grid__2 md:grid__1 sm:grid__1 g12 stackexchange-redesign-grid";
+            if (questions) {
+                questions.className = "d-grid grid__3 lg:grid__2 md:grid__1 sm:grid__1 g12 stackexchange-redesign-grid"
+                /*Array.from(questions.getElementsByTagName('div')).forEach(element => {
+                    if (element.classList.contains('s-post-summary__watched')) {
+                        element.innerHTML += `
+                        <span class="top"></span>
+                        <span class="right"></span>
+                        <span class="bottom"></span>
+                        <span class="left"></span>`
+                    }
+                });*/
+            };
             if (btn1.classList.contains('stackexchange-redesign-focus')) {
                 btn1.classList.remove('stackexchange-redesign-focus');
             }
