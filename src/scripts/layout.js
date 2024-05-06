@@ -1,6 +1,6 @@
 class StackExchangeRedesign {
     constructor() {
-        if(!window.location.href.includes('/questions/')){
+        if(!this.isStackExchangeQuestion(window.location.href)){
             this.initializeStyles();
             this.addButton(document.getElementById('mainbar'), '.d-flex', '#question-mini-list div');
             this.addButton(document.getElementById('mainbar'), '.d-flex', '#questions');
@@ -9,6 +9,10 @@ class StackExchangeRedesign {
             this.addButton(document.getElementById('user-tab-tags'), 'div', '#user-tab-tags .ba');
             this.addButton(document.getElementById('mainbar'), 'div', '.js-post-summaries');
         }
+    }
+    isStackExchangeQuestion(url){
+        var regex = /^https?:\/\/(?:www\.)?stackoverflow\.com\/questions\/\d+\/[^\/]+$/;
+        return regex.test(url);
     }
 
     initializeStyles() {
