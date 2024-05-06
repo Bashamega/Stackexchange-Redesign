@@ -1,12 +1,14 @@
 class StackExchangeRedesign {
     constructor() {
-        this.initializeStyles();
-        this.addButton(document.getElementById('mainbar'), '.d-flex', '#question-mini-list div');
-        this.addButton(document.getElementById('mainbar'), '.d-flex', '#questions');
-        this.addButton(document.getElementById('user-tab-questions'), 'div', '#js-post-summaries');
-        this.addButton(document.getElementById('user-tab-answers'), 'div', '#js-post-summaries');
-        this.addButton(document.getElementById('user-tab-tags'), 'div', '#user-tab-tags .ba');
-        this.addButton(document.getElementById('mainbar'), 'div', '.js-post-summaries');
+        if(!window.location.href.includes('/questions/')){
+            this.initializeStyles();
+            this.addButton(document.getElementById('mainbar'), '.d-flex', '#question-mini-list div');
+            this.addButton(document.getElementById('mainbar'), '.d-flex', '#questions');
+            this.addButton(document.getElementById('user-tab-questions'), 'div', '#js-post-summaries');
+            this.addButton(document.getElementById('user-tab-answers'), 'div', '#js-post-summaries');
+            this.addButton(document.getElementById('user-tab-tags'), 'div', '#user-tab-tags .ba');
+            this.addButton(document.getElementById('mainbar'), 'div', '.js-post-summaries');
+        }
     }
 
     initializeStyles() {
